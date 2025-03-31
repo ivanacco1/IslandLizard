@@ -7,7 +7,7 @@
 ## Think of Crazy, off the wall stuff for the inventions
 
 
-dragon_isle_missions_1 = {
+Z54_dragon_isle_missions_1 = {
 	slot = 1
 	generic = yes
 	has_country_shield = no
@@ -16,7 +16,7 @@ dragon_isle_missions_1 = {
 		culture = dragon_isles_lizardmen
 	}
 
-	lizards_focus_on_monsters_1 = {
+	Z54_lizards_focus_on_monsters_1 = {
 		icon = mission_lizard_army
 		required_missions = { }
 		position = 1
@@ -35,9 +35,9 @@ dragon_isle_missions_1 = {
 		}
 	}
 
-	lizards_focus_on_monsters_2 = {
+	Z54_lizards_focus_on_monsters_2 = {
 		icon = mission_lizard_army
-		required_missions = { lizards_expand_1 }
+		required_missions = { Z54_lizards_expand_1 }
 		position = 3
 
 		trigger = {
@@ -54,9 +54,9 @@ dragon_isle_missions_1 = {
 		}
 	}
 
-	lizards_focus_on_monsters_3 = {
+	Z54_lizards_focus_on_monsters_3 = {
 		icon = mission_lizard_army
-		required_missions = { lizards_expand_3 }
+		required_missions = { Z54_lizards_expand_3 }
 		position = 5
 
 		trigger = {
@@ -74,7 +74,7 @@ dragon_isle_missions_1 = {
 }
 
 
-dragon_isle_missions_2 = {
+Z54_dragon_isle_missions_2 = {
 	slot = 2
 	generic = yes
 	has_country_shield = no
@@ -83,7 +83,7 @@ dragon_isle_missions_2 = {
 		culture = dragon_isles_lizardmen
 	}
 
-	lizards_force_limit = {
+	Z54_lizards_force_limit = {
 		icon = mission_lizard_army
 		required_missions = { }
 		position = 1
@@ -107,9 +107,9 @@ dragon_isle_missions_2 = {
 		}
 	}
 
-	lizards_expand_1 = {
+	Z54_lizards_expand_1 = {
 		icon = mission_lizard_army
-		required_missions = { lizards_force_limit lizards_focus_on_monsters_1 }
+		required_missions = { Z54_lizards_force_limit lizards_focus_on_monsters_1 }
 		position = 2
 		
 		provinces_to_highlight = {
@@ -152,9 +152,9 @@ dragon_isle_missions_2 = {
 		}
 	}
 
-	lizards_expand_2 = {
+	Z54_lizards_expand_2 = {
 		icon = mission_lizard_army
-		required_missions = { lizards_expand_1 }
+		required_missions = { Z54_lizards_expand_1 }
 		position = 3
 		
 		provinces_to_highlight = {
@@ -193,9 +193,9 @@ dragon_isle_missions_2 = {
 		}
 	}
 
-	lizards_expand_3 = {
+	Z54_lizards_expand_3 = {
 		icon = mission_lizard_army
-		required_missions = { lizards_expand_2 lizards_focus_on_monsters_2 }
+		required_missions = { Z54_lizards_expand_2 Z54_lizards_focus_on_monsters_2 }
 		position = 3
 		
 		provinces_to_highlight = {
@@ -227,9 +227,9 @@ dragon_isle_missions_2 = {
 		}
 	}
 
-	lizards_expand_4 = {
+	Z54_lizards_expand_4 = {
 		icon = mission_lizard_army
-		required_missions = { lizards_expand_3 }
+		required_missions = { Z54_lizards_expand_3 }
 		position = 4
 		
 		provinces_to_highlight = {
@@ -268,9 +268,9 @@ dragon_isle_missions_2 = {
 		}
 	}
 
-	lizards_expand_5 = {
+	Z54_lizards_expand_5 = {
 		icon = mission_lizard_army
-		required_missions = { lizards_expand_4 lizards_focus_on_monsters_3 }
+		required_missions = { Z54_lizards_expand_4 Z54_lizards_focus_on_monsters_3 }
 		position = 5
 		
 		provinces_to_highlight = {
@@ -331,7 +331,7 @@ dragon_isle_missions_2 = {
 	}
 }
 
-dragon_isle_missions_3 = {
+Z54_dragon_isle_missions_3 = {
 	slot = 3
 	generic = yes
 	has_country_shield = no
@@ -340,9 +340,9 @@ dragon_isle_missions_3 = {
 		culture = dragon_isles_lizardmen
 	}
 
-	lizards_warlike_people_1 = {
+	Z54_lizards_warlike_people_1 = {
 		icon = mission_lizard_army
-		required_missions = { lizards_expand_4 }
+		required_missions = { Z54_lizards_expand_4 }
 		position = 6
 
 		trigger = {
@@ -357,9 +357,9 @@ dragon_isle_missions_3 = {
 		}
 	}
 
-	lizards_ultimate_lizard = {
+	Z54_lizards_ultimate_lizard = {
 		icon = mission_lizard_army
-		required_missions = { lizards_warlike_people_3 }
+		required_missions = { Z54_lizards_warlike_people_3 }
 		position = 8
 
 		trigger = {
@@ -379,7 +379,7 @@ dragon_isle_missions_3 = {
 	}
 }
 
-dragon_isle_missions_4 = {
+Z54_dragon_isle_missions_4 = {
 	slot = 4
 	generic = yes
 	has_country_shield = no
@@ -388,7 +388,7 @@ dragon_isle_missions_4 = {
 		culture = dragon_isles_lizardmen
 	}
 
-	lizards_using_resources_iron_1 = {
+	Z54_lizards_using_resources_iron_1 = {
 		icon = mission_lizard_army
 		required_missions = { }
 		position = 1
@@ -408,9 +408,9 @@ dragon_isle_missions_4 = {
 		}
 	}
 
-	lizards_using_resources_iron_2 = {
+	Z54_lizards_using_resources_iron_2 = {
 		icon = mission_lizard_army
-		required_missions = { lizards_using_resources_iron_1 lizards_using_resources_copper_1 }
+		required_missions = { Z54_lizards_using_resources_iron_1 Z54_lizards_using_resources_copper_1 }
 		position = 2
 
 		trigger = {
@@ -429,9 +429,9 @@ dragon_isle_missions_4 = {
 		}
 	}
 
-	lizards_using_resources_iron_3 = {
+	Z54_lizards_using_resources_iron_3 = {
 		icon = mission_lizard_army
-		required_missions = { lizards_using_resources_iron_2 }
+		required_missions = { Z54_lizards_using_resources_iron_2 }
 		position = 3
 
 		trigger = {
@@ -450,9 +450,9 @@ dragon_isle_missions_4 = {
 		}
 	}
 
-	lizards_using_resources_iron_4 = {
+	Z54_lizards_using_resources_iron_4 = {
 		icon = mission_lizard_army
-		required_missions = { lizards_using_resources_iron_3 lizards_using_resources_copper_2 }
+		required_missions = { Z54_lizards_using_resources_iron_3 Z54_lizards_using_resources_copper_2 }
 		position = 4
 
 		trigger = {
@@ -477,9 +477,9 @@ dragon_isle_missions_4 = {
 		}
 	}
 
-	lizards_warlike_people_3 = {
+	Z54_lizards_warlike_people_3 = {
 		icon = mission_lizard_army
-		required_missions = { lizards_warlike_people_2 lizards_warlike_people_1 }
+		required_missions = { Z54_lizards_warlike_people_2 Z54_lizards_warlike_people_1 }
 		position = 7
 
 		trigger = {
@@ -496,7 +496,7 @@ dragon_isle_missions_4 = {
 	}
 }
 
-dragon_isle_missions_5 = {
+Z54_dragon_isle_missions_5 = {
 	slot = 5
 	generic = yes
 	has_country_shield = no
@@ -505,7 +505,7 @@ dragon_isle_missions_5 = {
 		culture = dragon_isles_lizardmen
 	}
 
-	lizards_using_resources_copper_1 = {
+	Z54_lizards_using_resources_copper_1 = {
 		icon = mission_lizard_army
 		required_missions = { }
 		position = 1
@@ -525,9 +525,9 @@ dragon_isle_missions_5 = {
 		}
 	}
 
-	lizards_using_resources_copper_2 = {
+	Z54_lizards_using_resources_copper_2 = {
 		icon = mission_lizard_army
-		required_missions = { lizards_using_resources_iron_2 }
+		required_missions = { Z54_lizards_using_resources_iron_2 }
 		position = 3
 
 		trigger = {
@@ -546,9 +546,9 @@ dragon_isle_missions_5 = {
 		}
 	}
 
-	lizards_using_resources_copper_3 = {
+	Z54_lizards_using_resources_copper_3 = {
 		icon = mission_lizard_army
-		required_missions = { lizards_using_resources_copper_2 }
+		required_missions = { Z54_lizards_using_resources_copper_2 }
 		position = 4
 
 		trigger = {
@@ -567,7 +567,7 @@ dragon_isle_missions_5 = {
 		}
 	}
 
-	lizards_warlike_people_2 = {
+	Z54_lizards_warlike_people_2 = {
 		icon = mission_lizard_army
 		required_missions = {  }
 		position = 6
@@ -588,7 +588,7 @@ dragon_isle_missions_5 = {
 	}
 
 	
-	Conquest_of_ind = {
+	Z54_Conquest_of_ind = {
 		icon = mission_lizard_army
 		potential = {
 			tag = z95
@@ -625,12 +625,12 @@ dragon_isle_missions_5 = {
 			}
 		}
 
-	Conquest_of_ind_2 = {
+	Z54_Conquest_of_ind_2 = {
 		icon = mission_lizard_army
 		potential = {
 			tag = z95
 		}
-		required_missions = { Conquest_of_ind }
+		required_missions = { Z54_Conquest_of_ind }
 
 		provinces_to_highlight = {
 			OR = {
