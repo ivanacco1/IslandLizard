@@ -1,0 +1,631 @@
+
+##################################
+##### Dragon Isle
+##################################
+
+
+## Think of Crazy, off the wall stuff for the inventions
+
+
+dragon_isle_missions_1 = {
+	slot = 1
+	generic = yes
+	has_country_shield = no
+	ai = yes
+	potential = {
+		culture = dragon_isles_lizardmen
+	}
+
+	lizards_focus_on_monsters_1 = {
+		icon = mission_lizard_army
+		required_missions = { }
+		position = 1
+
+		trigger = {
+			if = {
+				army_tradition = 25
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = lizard_army_monsters_1
+				duration = -1
+			}
+		}
+	}
+
+	lizards_focus_on_monsters_2 = {
+		icon = mission_lizard_army
+		required_missions = { lizards_expand_1 }
+		position = 3
+
+		trigger = {
+			if = {
+				army_tradition = 50
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = lizard_army_monsters_2
+				duration = -1
+			}
+		}
+	}
+
+	lizards_focus_on_monsters_3 = {
+		icon = mission_lizard_army
+		required_missions = { lizards_expand_3 }
+		position = 5
+
+		trigger = {
+			army_size = 60
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = lizard_army_monsters_3
+				duration = -1
+			}
+			remove_country_modifier = lizard_army_monsters_2
+		}
+	}
+}
+
+
+dragon_isle_missions_2 = {
+	slot = 2
+	generic = yes
+	has_country_shield = no
+	ai = yes
+	potential = {
+		culture = dragon_isles_lizardmen
+	}
+
+	lizards_force_limit = {
+		icon = mission_lizard_army
+		required_missions = { }
+		position = 1
+
+		trigger = {
+			army_size_percentage = 1
+		}
+
+		effect = {
+			dragon_isles_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = lizard_barbarians_rise
+				duration = 3650 #10 years
+			}
+		}
+	}
+
+	lizards_expand_1 = {
+		icon = mission_lizard_army
+		required_missions = { lizards_force_limit lizards_focus_on_monsters_1 }
+		position = 2
+		
+		provinces_to_highlight = {
+			is_capital = yes
+			owner = {
+				OR = {
+					is_neighbor_of = ROOT
+					ROOT = { is_rival = prev }
+				}
+				any_owned_province = { region = dragon_isles_region }
+				army_size = root
+			}
+		}
+
+		trigger = {
+			estate_loyalty = {
+				estate = estate_nobles
+				loyalty = 65
+			}
+			num_of_estate_agendas_completed = {
+				estate = estate_nobles
+				value = 2
+			}
+			all_neighbor_country = {
+				OR = {
+					alliance_with = ROOT
+					NOT = { army_size = ROOT }
+					NOT = { any_owned_province = { region = dragon_isles_region } }
+				}
+			}
+			all_rival_country = { NOT = { army_size = ROOT } }
+		}
+
+		effect = {
+	
+			add_country_modifier = {
+				name = lizard_army_reform_1
+				duration = -1
+			}
+		}
+	}
+
+	lizards_expand_2 = {
+		icon = mission_lizard_army
+		required_missions = { lizards_expand_1 }
+		position = 3
+		
+		provinces_to_highlight = {
+			region = dragon_isles_region
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			estate_loyalty = {
+				estate = estate_nobles
+				loyalty = 65
+			}
+			num_of_estate_agendas_completed = {
+				estate = estate_nobles
+				value = 3
+			}
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 20
+				region = dragon_isles_region
+			}
+		}
+
+		effect = {
+			dragon_isles_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = lizard_army_reform_2
+				duration = -1
+			}
+			remove_country_modifier = lizard_army_reform_1
+		}
+	}
+
+	lizards_expand_3 = {
+		icon = mission_lizard_army
+		required_missions = { lizards_expand_2 lizards_focus_on_monsters_2 }
+		position = 3
+		
+		provinces_to_highlight = {
+			region = dragon_isles_region
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			estate_loyalty = {
+				estate = estate_nobles
+				loyalty = 65
+			}
+			num_of_estate_agendas_completed = {
+				estate = estate_nobles
+				value = 4
+			}
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 36
+				region = dragon_isles_region
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = lizard_army_reform_3
+				duration = -1
+			}
+			remove_country_modifier = lizard_army_reform_2
+		}
+	}
+
+	lizards_expand_4 = {
+		icon = mission_lizard_army
+		required_missions = { lizards_expand_3 }
+		position = 4
+		
+		provinces_to_highlight = {
+			region = dragon_isles_region
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			estate_loyalty = {
+				estate = estate_nobles
+				loyalty = 65
+			}
+			num_of_estate_agendas_completed = {
+				estate = estate_nobles
+				value = 5
+			}
+			if = {
+				limit = { has_dlc = "Common Sense" }
+				government_rank	= 3
+				else = { total_development = 1000 }
+			}
+			num_of_owned_provinces_with = {
+				value = 10
+					OR = {
+						has_building = barracks
+					}
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = lizard_army_reform_4
+				duration = -1
+			}
+			remove_country_modifier = lizard_army_reform_2
+		}
+	}
+
+	lizards_expand_5 = {
+		icon = mission_lizard_army
+		required_missions = { lizards_expand_4 lizards_focus_on_monsters_3 }
+		position = 5
+		
+		provinces_to_highlight = {
+			region = dragon_isles_region
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			estate_loyalty = {
+				estate = estate_nobles
+				loyalty = 65
+			}
+			num_of_estate_agendas_completed = {
+				estate = estate_nobles
+				value = 6
+			}
+			num_of_owned_provinces_with = {
+				value = 10
+					OR = {
+						has_building = regimental_camp
+					}
+			}
+			num_of_owned_provinces_with = {
+				value = 10
+					OR = {
+						has_building = soldier_households
+					}
+			}
+		}
+
+		effect = {
+			gnoblar_country_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+			western_ind_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+			add_country_modifier = {
+				name = lizard_army_monsters_4
+				duration = -1
+			}
+			add_country_modifier = {
+				name = lizard_army_fraction_monsters
+				duration = -1
+			}
+			remove_country_modifier = lizard_army_reform_4
+			remove_country_modifier = lizard_army_monsters_3
+			remove_country_modifier = lizard_army_monsters_1
+		}
+	}
+}
+
+dragon_isle_missions_3 = {
+	slot = 3
+	generic = yes
+	has_country_shield = no
+	ai = yes
+	potential = {
+		culture = dragon_isles_lizardmen
+	}
+
+	lizards_ultimate_lizard = {
+		icon = mission_lizard_army
+		required_missions = {  }
+		position = 8
+
+		trigger = {
+			
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = lizard_ultimate_lizard
+				duration = -1
+			}
+			add_country_modifier = {
+				name = lizard_ultimate_lizard_units
+				duration = -1
+			}
+		}
+	}
+}
+
+dragon_isle_missions_4 = {
+	slot = 4
+	generic = yes
+	has_country_shield = no
+	ai = yes
+	potential = {
+		culture = dragon_isles_lizardmen
+	}
+
+	lizards_using_resources_iron_1 = {
+		icon = mission_lizard_army
+		required_missions = { }
+		position = 1
+
+		trigger = {
+			trade_goods_produced_amount = {
+					trade_goods = iron
+					amount = 5
+				}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = lizard_iron_production_1
+				duration = -1
+			}
+		}
+	}
+
+	lizards_using_resources_iron_2 = {
+		icon = mission_lizard_army
+		required_missions = { lizards_using_resources_iron_1 lizards_using_resources_copper_1 }
+		position = 2
+
+		trigger = {
+			trade_goods_produced_amount = {
+					trade_goods = iron
+					amount = 10
+				}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = lizard_iron_production_2
+				duration = -1
+			}
+			remove_country_modifier = lizard_iron_production_1
+		}
+	}
+
+	lizards_using_resources_iron_3 = {
+		icon = mission_lizard_army
+		required_missions = { lizards_using_resources_iron_2 }
+		position = 3
+
+		trigger = {
+			trade_goods_produced_amount = {
+					trade_goods = iron
+					amount = 15
+				}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = lizard_iron_production_3
+				duration = -1
+			}
+			remove_country_modifier = lizard_iron_production_2
+		}
+	}
+
+	lizards_using_resources_iron_4 = {
+		icon = mission_lizard_army
+		required_missions = { lizards_using_resources_iron_3 lizards_using_resources_copper_2 }
+		position = 4
+
+		trigger = {
+			trade_goods_produced_amount = {
+					trade_goods = iron
+					amount = 20
+				}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = lizard_iron_production_4
+				duration = -1
+			}
+			remove_country_modifier = lizard_iron_production_3
+			remove_country_modifier = lizard_copper_production_2
+			change_price = {
+			    trade_goods = iron
+			    value = 0.1
+			    duration = -1
+			}
+		}
+	}
+
+	lizards_warlike_people_1 = {
+		icon = mission_lizard_army
+		required_missions = {  }
+		position = 6
+
+		trigger = {
+			army_size = 100
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = lizard_only_the_fitest
+				duration = -1
+			}
+		}
+	}
+}
+
+dragon_isle_missions_5 = {
+	slot = 5
+	generic = yes
+	has_country_shield = no
+	ai = yes
+	potential = {
+		culture = dragon_isles_lizardmen
+	}
+
+	lizards_using_resources_copper_1 = {
+		icon = mission_lizard_army
+		required_missions = { }
+		position = 1
+
+		trigger = {
+			trade_goods_produced_amount = {
+					trade_goods = copper
+					amount = 3
+				}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = lizard_copper_production_1
+				duration = -1
+			}
+		}
+	}
+
+	lizards_using_resources_copper_2 = {
+		icon = mission_lizard_army
+		required_missions = { lizards_using_resources_iron_2 }
+		position = 3
+
+		trigger = {
+			trade_goods_produced_amount = {
+					trade_goods = copper
+					amount = 6
+				}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = lizard_copper_production_2
+				duration = -1
+			}
+			remove_country_modifier = lizard_copper_production_1
+		}
+	}
+
+	lizards_using_resources_copper_3 = {
+		icon = mission_lizard_army
+		required_missions = { lizards_using_resources_copper_2 }
+		position = 4
+
+		trigger = {
+			trade_goods_produced_amount = {
+					trade_goods = copper
+					amount = 10
+				}
+		}
+
+		effect = {
+			change_price = {
+			    trade_goods = copper
+			    value = 0.15
+			    duration = -1
+			}
+		}
+	}
+
+	lizards_warlike_people_2 = {
+		icon = mission_lizard_army
+		required_missions = {  }
+		position = 6
+
+		trigger = {
+			any_enemy_country = {
+            	is_rival = yes
+				religion = chaos_undivided_religion
+        	}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = lizard_war_chaos
+				duration = -1
+			}
+		}
+	}
+}
+
+### Saurus are our powerful infantry, but they can sometimes run amok. Train them
+	gen_lizard_saurus = {
+		icon = mission_lizardmen_culture
+		required_missions = {  }
+		position = 6
+		trigger = {
+			is_at_war = yes
+			num_of_regiments_at_full_drill = 30
+		}
+		effect = {
+			add_country_modifier = {
+				name = lizard_saurus_warriors
+				duration = -1
+			}
+		}
+	}
+
+
+### It's always been challenging to integrate our huge dinosaurs into our army. We need an army reform to do this.
+	gen_lizard_get_monsters = {
+		icon = mission_lizardmen_culture
+		required_missions = { gen_lizard_saurus }
+		trigger = {
+			num_of_cossacks = 3
+			army_tradition = 20
+			mil_power = 100
+
+		}
+		effect = {
+			add_army_tradition = -20
+			add_mil_power = -100
+
+			add_country_modifier = {
+				name = lizard_better_monsters_1
+				duration = -1
+			}
+		}
+	}
+
+### Fighting alongside dinosaurs can be challenging. We need to resturcture our army to make this work.
+	gen_lizard_monster_spawning_grounds = {
+		icon = mission_lizardmen_culture
+		required_missions = { gen_lizard_get_monsters }
+		trigger = {
+			num_of_cossacks = 6
+			army_professionalism = 0.20
+			mil_power = 100
+		}
+		effect = {
+			add_army_professionalism = -0.20
+			add_mil_power = -100
+
+			add_country_modifier = {
+				name = lizard_better_monsters_2
+				duration = -1
+			}
+		}
+	}
+}

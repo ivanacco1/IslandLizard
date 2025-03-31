@@ -1,0 +1,23 @@
+government = tribal
+add_government_reform = dragon_regime
+government_rank = 1
+primary_culture = dragon_isles_lizardmen
+religion = shamanism
+unlock_cult = mwari_cult
+unlock_cult = central_african_ancestor_cult
+unlock_cult = cwezi_cult
+technology_group = tech_di_lizardmen
+capital = 4867# Owari
+
+setup_vision = yes
+
+2502.1.1 = {
+	monarch = {
+		name = "Xnuuk"
+		dynasty = "Zipacna"
+		birth_date = 2470.12.3
+		adm = 0
+		dip = 5
+		mil = 0
+	}
+}

@@ -1,0 +1,67 @@
+dragon_regime = {
+	icon = "chieftain"
+	allow_normal_conversion = yes
+	valid_for_nation_designer = yes
+	nation_designer_cost = 30
+	legacy_equivalent = shaka_regime_legacy
+	potential = {
+		religion = shamanism
+	}
+	trigger = {
+		religion = shamanism
+	}
+	modifiers = {
+		leader_cost = -0.1
+		land_forcelimit_modifier = -0.25
+		war_exhaustion = -0.02
+		can_recruit_rajputs = yes
+		allowed_rajput_fraction = 0.05
+	}
+
+	conditional = {
+		allow = {
+			has_dlc = "Rights of Man"
+		}
+		government_abilities = {
+			militarization_mechanic
+		}
+	}
+
+	ai = {
+		factor = 1
+	}
+}
+
+dragon_isle_regime = {
+	icon = "chieftain"
+	allow_normal_conversion = yes
+	valid_for_nation_designer = yes
+	nation_designer_cost = 30
+	legacy_equivalent = shaka_regime_legacy
+	potential = {
+		religion = shamanism
+	}
+	trigger = {
+		religion = shamanism
+	}
+	modifiers = {
+		leader_cost = -0.2
+		land_forcelimit_modifier = -0.3
+		war_exhaustion = -0.03
+		can_recruit_rajputs = yes
+		allowed_rajput_fraction = 0.15
+	}
+
+	conditional = {
+		allow = {
+			has_dlc = "Rights of Man"
+		}
+		government_abilities = {
+			militarization_mechanic
+		}
+	}
+
+	ai = {
+		factor = 1
+	}
+}

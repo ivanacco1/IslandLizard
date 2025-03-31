@@ -1,0 +1,7 @@
+spriteTypes = {
+
+	spriteType = {
+		name = "mission_lizard_army"
+		texturefile = "gfx/interface/missions/mission_lizard_army.dds"
+	}
+}
