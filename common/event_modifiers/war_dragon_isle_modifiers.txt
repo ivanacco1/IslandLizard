@@ -88,9 +88,13 @@ lizard_war_chaos = {
 }
 
 lizard_only_the_fitest = {
-	land_forcelimit_modifier = -0.2
-	discipline = 0.025
-	shock_damage_received = 0.05
+	land_forcelimit_modifier = -0.1
+	discipline = 0.05
+}
+
+lizard_only_the_fitest_2 = {
+	movement_speed = 0.15
+	fire_damage_received = -0.1
 }
 
 lizard_ultimate_lizard = {

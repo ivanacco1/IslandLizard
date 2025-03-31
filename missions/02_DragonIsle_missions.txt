@@ -340,9 +340,26 @@ dragon_isle_missions_3 = {
 		culture = dragon_isles_lizardmen
 	}
 
+	lizards_warlike_people_1 = {
+		icon = mission_lizard_army
+		required_missions = { lizards_expand_4 }
+		position = 6
+
+		trigger = {
+			army_size = 100
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = lizard_only_the_fitest
+				duration = -1
+			}
+		}
+	}
+
 	lizards_ultimate_lizard = {
 		icon = mission_lizard_army
-		required_missions = {  }
+		required_missions = { lizards_warlike_people_3 }
 		position = 8
 
 		trigger = {
@@ -460,18 +477,19 @@ dragon_isle_missions_4 = {
 		}
 	}
 
-	lizards_warlike_people_1 = {
+	lizards_warlike_people_3 = {
 		icon = mission_lizard_army
-		required_missions = {  }
-		position = 6
+		required_missions = { lizards_warlike_people_2 lizards_warlike_people_1 }
+		position = 7
 
 		trigger = {
-			army_size = 100
+			army_professionalism = 0.5
+			army_size = 150
 		}
 
 		effect = {
 			add_country_modifier = {
-				name = lizard_only_the_fitest
+				name = lizard_only_the_fitest_2
 				duration = -1
 			}
 		}
@@ -570,7 +588,7 @@ dragon_isle_missions_5 = {
 	}
 
 	
-{	Conquest_of_ind = {
+	Conquest_of_ind = {
 		icon = mission_lizard_army
 		potential = {
 			tag = z95
@@ -587,7 +605,6 @@ dragon_isle_missions_5 = {
 		}
 		trigger = {
 			dragon_isles_region= { type = all country_or_non_sovereign_subject_holds = ROOT }
-		
 		}
 
 		effect = {
@@ -607,7 +624,6 @@ dragon_isle_missions_5 = {
 				}
 			}
 		}
-	}
 
 	Conquest_of_ind_2 = {
 		icon = mission_lizard_army
@@ -645,5 +661,6 @@ dragon_isle_missions_5 = {
 					add_permanent_claim = ROOT
 				}
 			}
-		}}
+		}
+	}
 	
