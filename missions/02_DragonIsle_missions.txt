@@ -568,64 +568,82 @@ dragon_isle_missions_5 = {
 			}
 		}
 	}
-}
 
-### Saurus are our powerful infantry, but they can sometimes run amok. Train them
-	gen_lizard_saurus = {
-		icon = mission_lizardmen_culture
+	
+{	Conquest_of_ind = {
+		icon = mission_lizard_army
+		potential = {
+			tag = z95
+		}
 		required_missions = {  }
-		position = 6
-		trigger = {
-			is_at_war = yes
-			num_of_regiments_at_full_drill = 30
+		position = 7
+
+		provinces_to_highlight = {
+			OR = {
+				region = dragon_isles_region
+				
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
+		trigger = {
+			dragon_isles_region= { type = all country_or_non_sovereign_subject_holds = ROOT }
+		
+		}
+
 		effect = {
-			add_country_modifier = {
-				name = lizard_saurus_warriors
-				duration = -1
+			gnoblar_country_2_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+				gnoblar_country_5_area= {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
 			}
 		}
 	}
 
-
-### It's always been challenging to integrate our huge dinosaurs into our army. We need an army reform to do this.
-	gen_lizard_get_monsters = {
-		icon = mission_lizardmen_culture
-		required_missions = { gen_lizard_saurus }
-		trigger = {
-			num_of_cossacks = 3
-			army_tradition = 20
-			mil_power = 100
-
+	Conquest_of_ind_2 = {
+		icon = mission_lizard_army
+		potential = {
+			tag = z95
 		}
-		effect = {
-			add_army_tradition = -20
-			add_mil_power = -100
+		required_missions = { Conquest_of_ind }
 
-			add_country_modifier = {
-				name = lizard_better_monsters_1
-				duration = -1
+		provinces_to_highlight = {
+			OR = {
+				area = ind_2_area
+				area = ind_1_area
+				
 			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
-	}
-
-### Fighting alongside dinosaurs can be challenging. We need to resturcture our army to make this work.
-	gen_lizard_monster_spawning_grounds = {
-		icon = mission_lizardmen_culture
-		required_missions = { gen_lizard_get_monsters }
 		trigger = {
-			num_of_cossacks = 6
-			army_professionalism = 0.20
-			mil_power = 100
+			dragon_isles_region= { type = all country_or_non_sovereign_subject_holds = ROOT }
+		
 		}
-		effect = {
-			add_army_professionalism = -0.20
-			add_mil_power = -100
 
-			add_country_modifier = {
-				name = lizard_better_monsters_2
-				duration = -1
+		effect = {
+			gnoblar_country_2_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
 			}
-		}
-	}
-}
+				gnoblar_country_5_area= {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+		}}
+	

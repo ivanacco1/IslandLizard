@@ -11,6 +11,7 @@ country_decisions = {
 		provinces_to_highlight = {
 			OR = {
 				province_id = 4261
+				region = dragon_isles_region
 			}
 			NOT = { owned_by = ROOT }
 		}
@@ -18,10 +19,7 @@ country_decisions = {
 			NOT = { exists = Z95 }
 			is_free_or_tributary_trigger = yes
 			owns = 4261
-			num_of_owned_provinces_with = {
-				value = 20
-				is_core = root
-			}
+			dragon_isles_region= { type = all country_or_non_sovereign_subject_holds = ROOT }
 			is_at_war = no
 		}
 		effect = {
