@@ -483,6 +483,145 @@ Z54_dragon_isle_missions_3 = {
 			}
 		}
 	}
+
+	Z54_Conquest_of_ind = {
+		icon = mission_lizard_army
+		required_missions = {  }
+		position = 9
+		
+
+		provinces_to_highlight = {
+			OR = {
+				region = dragon_isles_region
+				
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			dragon_isles_region= { type = all country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		effect = {
+			gnoblar_country_2_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+				gnoblar_country_5_area= {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+		}
+
+	Z54_Conquest_of_ind_2 = {
+		icon = mission_lizard_army
+		
+
+		required_missions = { Z54_Conquest_of_ind }
+
+		provinces_to_highlight = {
+			OR = {
+				area = gnoblar_country_2_area
+				area = gnoblar_country_5_area
+				
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			gnoblar_country_2_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+			gnoblar_country_5_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+
+		}
+
+		effect = {
+			ind_1_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			ind_2_area= {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+		}
+
+		Z54_Descent_into_ind = {
+			icon = mission_lizard_army
+			required_missions = { Z54_Conquest_of_ind_2 }
+			provinces_to_highlight = {
+				OR = {
+					area = ind_2_area
+					area = ind_1_area
+					
+				}
+				NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			}
+			trigger = {
+				dragon_isles_region= { type = all country_or_non_sovereign_subject_holds = ROOT }
+			
+			}
+	
+			effect = {
+				country_event = { 
+					id = lizardmen_events.11
+
+				}
+	
+				}
+			}
+
+			Z54_Fall_of_bhalluka = {
+				icon = mission_lizard_army
+				required_missions = { Z54_Descent_into_ind }
+				
+				provinces_to_highlight = {
+					OR = {
+						area = ind_3_area
+						province_id = 4070
+						province_id = 4071
+						province_id = 4072
+						province_id = 4077
+						province_id = 4078
+						province_id = 4079
+						province_id = 4253
+					}
+					NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			}
+			trigger = {
+				AND = {
+					ind_3_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+					owns = 4070
+					owns = 4071
+					owns = 4072
+					owns = 4077
+					owns = 4078
+					owns = 4079
+					owns = 4253
+					}
+				
+			}
+		
+			effect = {
+				country_event = { 
+					id = lizardmen_events.11
+	
+					}
+		
+					}
+			}
+
 }
 
 Z54_dragon_isle_missions_4 = {
@@ -692,134 +831,5 @@ Z54_dragon_isle_missions_5 = {
 			}
 		}
 	}
-
-	
-	Z54_Conquest_of_ind = {
-		icon = mission_lizard_army
-		required_missions = {  }
-		position = 7
-
-		provinces_to_highlight = {
-			OR = {
-				region = dragon_isles_region
-				
-			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-		trigger = {
-			dragon_isles_region= { type = all country_or_non_sovereign_subject_holds = ROOT }
-		}
-
-		effect = {
-			gnoblar_country_2_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-				gnoblar_country_5_area= {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-			}
-		}
-
-	Z54_Conquest_of_ind_2 = {
-		icon = mission_lizard_army
-		
-
-		required_missions = { Z54_Conquest_of_ind }
-
-		provinces_to_highlight = {
-			OR = {
-				area = gnoblar_country_2_area
-				area = gnoblar_country_5_area
-				
-			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-		trigger = {
-			gnoblar_country_2_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
-			gnoblar_country_5_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
-
-		}
-
-		effect = {
-			ind_1_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			ind_2_area= {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-			}
-		}
-
-		Z54_Descent_into_ind = {
-			icon = mission_lizard_army
-			required_missions = { Z54_Conquest_of_ind_2 }
-			position = 9
-			provinces_to_highlight = {
-				OR = {
-					area = ind_2_area
-					area = ind_1_area
-					
-				}
-				NOT = { country_or_non_sovereign_subject_holds = ROOT }
-			}
-			trigger = {
-				dragon_isles_region= { type = all country_or_non_sovereign_subject_holds = ROOT }
-			
-			}
-	
-			effect = {
-				country_event = { 
-					id = lizardmen_events.11
-
-				}
-	
-				}
-			}
-
-			Z54_Fall_of_bhalluka = {
-				icon = mission_lizard_army
-				required_missions = { Z54_Descent_into_ind }
-				
-				provinces_to_highlight = {
-					OR = {
-						area = ind_3_area
-					}
-					NOT = { country_or_non_sovereign_subject_holds = ROOT }
-			}
-			trigger = {
-				AND = {
-					ind_3_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
-					
-					}
-				
-			}
-		
-			effect = {
-				country_event = { 
-					id = lizardmen_events.11
-	
-					}
-		
-					}
-			}
-			
-			
-
 	}
 	
