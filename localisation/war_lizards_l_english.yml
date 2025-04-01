@@ -129,6 +129,10 @@ lizardmen_events.10.b:0 "Declare total war upon the humans."
  gen_lizard_ultimate_mission_title: "The Geomantic Web"
  gen_lizard_ultimate_mission_desc: "The ultimate goal of the Lizardmen is to restore the Geomantic Web to its full potential. By controlling the key Temple Cities and aligning them with the ancient power lines, we shall wield the planetary energies as the Old Ones intended."
  
+ Z54_Fall_of_bhalluka_mission_title: "The fall of bhalluka"
+ Z54_Fall_of_bhalluka_mission_desc: "With the fall of Bhalluka, the mighty Lizardmen legions have shattered the heart of Ind’s resistance. Colossal war-beasts now roam the devastated city, while Saurus Warlords impose brutal order upon the surviving populace. The sacred glyphs of the Old Ones are etched upon the ruins, proclaiming dominion over the broken city. Ind shall remember this day, for it marks the dawn of a new order—one forged by titanic might and unwavering will"
+ 
+ 
  
  ### Old Ones
  
