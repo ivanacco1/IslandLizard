@@ -9,7 +9,7 @@ race_relations_1_missions = {
 	potential = {
 		is_part_of_hre = no
 		NOT = { culture_group = asrai_group }
-		NOT = { culture_group = dwarf_group }`
+		NOT = { culture_group = dwarf_group }
 		NOT = { religion = shamanism }
 		NOT = {
 			AND = {
