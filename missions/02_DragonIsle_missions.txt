@@ -637,8 +637,9 @@ Z54_dragon_isle_missions_5 = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			dragon_isles_region= { type = all country_or_non_sovereign_subject_holds = ROOT }
-		
+			gnoblar_country_2_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+			gnoblar_country_5_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+
 		}
 
 		effect = {
@@ -691,13 +692,15 @@ Z54_dragon_isle_missions_5 = {
 				
 				provinces_to_highlight = {
 					OR = {
-						area = ind_2_area
-						area = ind_1_area
-						
+						area = ind_3_area
+					}
 					NOT = { country_or_non_sovereign_subject_holds = ROOT }
 			}
 			trigger = {
-					dragon_isles_region= { type = all country_or_non_sovereign_subject_holds = ROOT }
+				AND = {
+					ind_3_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+					
+					}
 				
 			}
 		
