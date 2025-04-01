@@ -582,6 +582,7 @@ Z54_dragon_isle_missions_3 = {
 				}
 			}
 
+
 			Z54_Fall_of_bhalluka = {
 				icon = mission_lizard_army
 				required_missions = { Z54_Descent_into_ind }
@@ -614,15 +615,107 @@ Z54_dragon_isle_missions_3 = {
 			}
 		
 			effect = {
-				country_event = { 
-					id = lizardmen_events.11
+
+					ind_8_area = {
+						limit = {
+							NOT = { is_core = ROOT }
+							NOT = { is_permanent_claim = ROOT }
+						}
+						add_permanent_claim = ROOT
+					}
+					ind_6_area= {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+						ind_25_area= {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+						ind_17_area= {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+						ind_5_area= {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+						ind_24_area= {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+
+						ind_23_area= {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
+						ind_4_area= {
+							limit = {
+								NOT = { is_core = ROOT }
+								NOT = { is_permanent_claim = ROOT }
+							}
+							add_permanent_claim = ROOT
+						}
 	
 					}
+					
+
 		
 					}
+
+					Z54_March_south = {
+						position = 13
+						icon = mission_lizard_army
+						required_missions = { Z54_Fall_of_bhalluka }
+						provinces_to_highlight = {
+							OR = {
+								area = ind_2_area
+								area = ind_1_area
+								
+							}
+							NOT = { country_or_non_sovereign_subject_holds = ROOT }
+						}
+						trigger = {
+							dragon_isles_region= { type = all country_or_non_sovereign_subject_holds = ROOT }
+						
+						}
+				
+						effect = {
+							country_event = { 
+								id = lizardmen_events.11
+			
+							}
+				
+							}
+						}
+
+
+
+
+
+
+
+
 			}
 
-}
+
 
 Z54_dragon_isle_missions_4 = {
 	slot = 4
@@ -739,6 +832,36 @@ Z54_dragon_isle_missions_4 = {
 			}
 		}
 	}
+
+	Z54_March_East = {
+		icon = mission_lizard_army
+		position = 13	
+		required_missions = { Z54_Fall_of_bhalluka }
+		provinces_to_highlight = {
+			OR = {
+				area = ind_2_area
+				area = ind_1_area
+				
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			dragon_isles_region= { type = all country_or_non_sovereign_subject_holds = ROOT }
+		
+		}
+
+		effect = {
+			country_event = { 
+				id = lizardmen_events.11
+
+			}
+
+			}
+		}
+
+
+
+
 }
 
 Z54_dragon_isle_missions_5 = {
