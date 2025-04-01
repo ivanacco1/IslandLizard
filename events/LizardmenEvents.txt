@@ -612,7 +612,7 @@ country_event = {
 	id = lizardmen_events.11
 	title = lizardmen_events.10.title
 	desc = lizardmen_events.10.desc
-	picture = Descent
+	picture = LIZARDMEN_Descent
 
 
 	fire_only_once = yes
@@ -625,12 +625,9 @@ country_event = {
 		ai_chance = { factor = 50 }
 		name = lizardmen_events.10.a 
 
-		random_owned_province = {
-			spawn_rebels = {
-				type = particularist_rebels
-				leader = rebel_preacher
-				size = 1
-			}
+		add_country_modifier = {
+			name = lizard_slow_integration
+			duration = 18.250
 		}
 
 	}
@@ -640,8 +637,10 @@ country_event = {
 		ai_chance = { factor = 50 }
 		name = lizardmen_events.10.b
 
-		add_stability = -1
-		create_general = { tradition = 100 }
+		add_country_modifier = {
+			name = lizard_Totalen_krieg
+			duration = 18.250
+		}
 
 	}
 }

@@ -111,3 +111,15 @@ lizard_ultimate_lizard_units = {
 	shock_damage_received = 0.23
 	is_rajput_modifier = yes
 }
+
+lizard_slow_integration = {
+	core_creation = -0.2
+	global_unrest = -2
+}
+
+lizard_Totalen_krieg ={
+	warscore_cost_vs_other_religion = -0.33
+	war_exhaustion = 0.05
+	global_unrest = 2
+	ae_impact = 0.15
+}
