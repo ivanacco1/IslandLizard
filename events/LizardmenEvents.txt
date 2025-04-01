@@ -608,6 +608,7 @@ country_event = {
 
 	}
 }
+
 country_event = { 
 	id = lizardmen_events.11
 	title = lizardmen_events.10.title
@@ -644,4 +645,36 @@ country_event = {
 
 	}
 }
+
+event = {
+    id = lizardmen_events.12
+    title = "Cliffside Settlements Established"
+    desc = "Our people have carved mighty homes into the cliffs, creating a nearly unassailable city."
+    picture = GFX_event_buildings  # Choose an appropriate image
+
+    trigger = {
+        OR = {
+            terrain = hills
+            terrain = mountains
+        }
+        has_construction = fort
+    }
+
+    mean_time_to_happen = { months = 1 }
+
+    option = {
+        name = "Let them thrive!"
+        add_province_modifier = {
+            name = lizard_cliffside_settlement
+            duration = -1
+        }
+    }
+
+    option = {
+        name = "Destroy their unnatural homes!"
+        remove_province_modifier = lizard_cliffside_settlement
+        add_prestige = -5
+    }
+}
+
 

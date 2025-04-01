@@ -123,3 +123,11 @@ lizard_Totalen_krieg ={
 	global_unrest = 2
 	ae_impact = 0.15
 }
+
+lizard_cliffside_settlement = {
+	local_production_efficiency = 0.1
+}
+
+lizard_summer_capital = {
+	development_cost_modifier = -0.15
+}

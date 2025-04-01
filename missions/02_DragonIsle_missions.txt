@@ -71,6 +71,173 @@ Z54_dragon_isle_missions_1 = {
 			remove_country_modifier = lizard_army_monsters_2
 		}
 	}
+
+	Z54_lizards_focus_on_monsters_4 = {
+		icon = mission_lizard_army
+		required_missions = { Z54_lizards_expand_4 Z54_lizards_focus_on_monsters_3 }
+		position = 5
+		
+		provinces_to_highlight = {
+			region = dragon_isles_region
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			estate_loyalty = {
+				estate = estate_nobles
+				loyalty = 65
+			}
+			num_of_estate_agendas_completed = {
+				estate = estate_nobles
+				value = 6
+			}
+			num_of_owned_provinces_with = {
+				value = 10
+					OR = {
+						has_building = regimental_camp
+					}
+			}
+			num_of_owned_provinces_with = {
+				value = 10
+					OR = {
+						has_building = soldier_households
+					}
+			}
+		}
+
+		effect = {
+			gnoblar_country_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+			western_ind_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+			add_country_modifier = {
+				name = lizard_army_monsters_4
+				duration = -1
+			}
+			add_country_modifier = {
+				name = lizard_army_fraction_monsters
+				duration = -1
+			}
+			remove_country_modifier = lizard_army_reform_4
+			remove_country_modifier = lizard_army_monsters_3
+			remove_country_modifier = lizard_army_monsters_1
+		}
+	}
+
+	Z54_lizards_focus_on_monsters_9 = {
+		icon = mission_lizard_army
+		required_missions = {  }
+		position = 7
+
+		provinces_to_highlight = {
+			area_for_scope_province = {
+				is_capital_of = ROOT
+			}
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			capital_scope = {
+				fort_level = 3
+				area_for_scope_province = {
+					type = all
+					owned_by = ROOT
+				}
+			}
+		}
+
+		effect = {
+			add_stability_or_adm_power = yes
+		}
+	}
+
+	Z54_lizards_focus_on_monsters_9 = {
+		icon = mission_lizard_army
+		required_missions = {  }
+		position = 8
+
+		trigger = {
+			stability = 2
+			num_of_states = 3
+		}
+
+		effect = {
+			define_general = {
+			    shock = 2
+			    fire = 6
+			    manuever = 8
+			    siege = 2
+			}
+		}
+	}
+
+	Z54_lizards_focus_on_monsters_9 = {
+		icon = mission_lizard_army
+		required_missions = {  }
+		position = 9
+
+		provinces_to_highlight = {
+			owned_by = ROOT
+			has_fort_building_trigger = yes
+			NOT = {
+				fort_level = 2
+			}
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				fort_level = 2
+				value = 4
+			}
+		}
+
+		effect = {
+			add_yearly_manpower = 2.5
+		}
+	}
+
+	Z54_lizards_focus_on_monsters_9 = {
+		icon = mission_lizard_army
+		required_missions = {  }
+		position = 10
+
+		provinces_to_highlight = {
+			province_id = 4261
+		}
+
+		trigger = {
+			4261 = {
+				owned_by = ROOT
+				NOT = { devastation = 1 }
+				NOT = { unrest = 1 }
+			}
+		}
+
+		effect = {
+			4531 = {
+				move_capital_effect = yes
+				change_province_name = "Korr'Zhul" 
+				rename_capital = "Korr'Zhul"
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				add_province_modifier = {
+					name = "lizard_summer_capital"
+					duration = -1
+				}
+			}
+		}
+	}
 }
 
 
@@ -268,67 +435,6 @@ Z54_dragon_isle_missions_2 = {
 		}
 	}
 
-	Z54_lizards_expand_5 = {
-		icon = mission_lizard_army
-		required_missions = { Z54_lizards_expand_4 Z54_lizards_focus_on_monsters_3 }
-		position = 5
-		
-		provinces_to_highlight = {
-			region = dragon_isles_region
-			NOT = { owned_by = ROOT }
-		}
-
-		trigger = {
-			estate_loyalty = {
-				estate = estate_nobles
-				loyalty = 65
-			}
-			num_of_estate_agendas_completed = {
-				estate = estate_nobles
-				value = 6
-			}
-			num_of_owned_provinces_with = {
-				value = 10
-					OR = {
-						has_building = regimental_camp
-					}
-			}
-			num_of_owned_provinces_with = {
-				value = 10
-					OR = {
-						has_building = soldier_households
-					}
-			}
-		}
-
-		effect = {
-			gnoblar_country_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-			western_ind_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-			add_country_modifier = {
-				name = lizard_army_monsters_4
-				duration = -1
-			}
-			add_country_modifier = {
-				name = lizard_army_fraction_monsters
-				duration = -1
-			}
-			remove_country_modifier = lizard_army_reform_4
-			remove_country_modifier = lizard_army_monsters_3
-			remove_country_modifier = lizard_army_monsters_1
-		}
-	}
 }
 
 Z54_dragon_isle_missions_3 = {
