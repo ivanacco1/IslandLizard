@@ -106,20 +106,6 @@ Z54_dragon_isle_missions_1 = {
 		}
 
 		effect = {
-			gnoblar_country_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-			western_ind_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
 			add_country_modifier = {
 				name = lizard_army_monsters_4
 				duration = -1
@@ -435,6 +421,59 @@ Z54_dragon_isle_missions_2 = {
 		}
 	}
 
+	Z54_Convert_Heathens = {
+		icon = mission_lizard_army
+		required_missions = { Z54_Fall_of_bhalluka }
+		position = 13
+		
+		provinces_to_highlight = {
+			region = dragon_isles_region
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = obj_convert_25_provinces_tooltip
+				check_variable = { which = num_converted_religion value = 10 }
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = lizard_religious_conversion
+				duration = 5000
+			}
+			
+		}
+	}
+
+	Z54_Religious_Hegemony = {
+		icon = mission_lizard_army
+		required_missions = { Z54_Convert_Heathens }
+		position = 13
+		
+		provinces_to_highlight = {
+			region = dragon_isles_region
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = obj_convert_25_provinces_tooltip
+				check_variable = { which = num_converted_religion value = 150 }
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = lizard_religious_hegemony
+				duration = 5000
+			}
+			
+		}
+	}
+
+
 }
 
 Z54_dragon_isle_missions_3 = {
@@ -445,6 +484,253 @@ Z54_dragon_isle_missions_3 = {
 	potential = {
 		culture = dragon_isles_lizardmen
 	}
+	### Priests are now willing to try a 6th Slann spawning. They attune with the ley lines
+		gen_old_ones_happy_priest = {
+			icon = mission_lizardmen_religion
+			required_missions = { }
+			position = 1
+			trigger = {
+				estate_loyalty = {
+					estate = estate_church
+					loyalty = 65
+				}
+				num_of_estate_agendas_completed = {
+					estate = estate_church
+					value = 1
+				}
+			}
+			effect = {
+				add_country_modifier = {
+					name = lizard_allow_geomantic_web
+					duration = -1
+				}
+				4261 = {
+					add_permanent_claim = ROOT
+				}
+				2312 = {
+					add_permanent_claim = ROOT
+				}
+				2466 = {
+					add_permanent_claim = ROOT
+				}
+				2442 = {
+					add_permanent_claim = ROOT
+				}
+				4296 = {
+					add_permanent_claim = ROOT
+				}
+				4807 = {
+					add_permanent_claim = ROOT
+				}
+				4265 = {
+					add_permanent_claim = ROOT
+				}
+				4383 = {
+					add_permanent_claim = ROOT
+				}
+			}
+		}
+	
+	
+	### The skink priests find a good place with good ley lines for the rituals
+		gen_old_ones_identify_ritual_site = {
+			icon = mission_lizardmen_religion
+			required_missions = { gen_old_ones_happy_priest }
+			provinces_to_highlight = {
+				owned_by = ROOT
+				is_prosperous = no
+			}
+			trigger = {
+				OR = {
+					all_owned_province = {
+						is_prosperous = yes
+					}
+					num_of_owned_provinces_with = {
+						is_prosperous = yes
+						value = 12
+					}
+				}
+			}
+			effect = {
+				random_owned_province = {
+					add_permanent_province_modifier = { 
+						name = lizard_6th_spawning_site
+						duration = -1 
+					}
+				}
+			}
+		}
+	
+	
+	
+	### They build a ritual site at the leyline
+		gen_old_ones_build_ritual_site = {
+			icon = mission_lizardmen_religion
+			required_missions = { gen_old_ones_identify_ritual_site }
+			provinces_to_highlight = {
+				has_province_modifier = lizard_6th_spawning_site
+			}
+			trigger = {
+				num_of_owned_provinces_with = {
+					has_province_modifier = lizard_6th_spawning_site
+					development = 30
+					OR = {
+						has_building = temple
+						has_building = cathedral
+					}
+					value = 1
+				}
+			}
+			effect = {
+				random_owned_province = {
+					limit = {
+						has_province_modifier = lizard_6th_spawning_site
+						development = 30
+						OR = {
+							has_building = temple
+							has_building = cathedral
+						}
+					}
+					add_permanent_province_modifier = { 
+						name = lizard_ritual_site_ready
+						duration = -1 
+					}
+				}
+			}
+		}
+	
+	### Trying out some things before attempting the 6th Slann Spawning.
+		gen_old_ones_experiments = {
+			icon = mission_lizardmen_religion
+			required_missions = { gen_old_ones_build_ritual_site }
+			trigger = {
+				adm_power = 200
+				dip_power = 200
+				mil_power = 200
+				manpower = 10.0
+			}
+			effect = {
+				add_adm_power = -200
+				add_dip_power = -200
+				add_mil_power = -200
+				add_manpower = -2.0
+				add_country_modifier = {
+					name = lizard_innovation
+					duration = -1
+				}
+			}
+		}
+	
+	### The 6th Slann spawning is a success! A slann rules the nation, there is a slann heir, and most future leaders will be Slann.
+		gen_old_6th_spawning = {
+			icon = mission_lizardmen_religion
+			required_missions = { gen_old_ones_experiments }
+			provinces_to_highlight = {
+				has_province_modifier = lizard_ritual_site_ready
+			}
+			trigger = {
+	
+				num_of_owned_provinces_with = {
+					has_province_modifier = lizard_ritual_site_ready
+					development = 50
+					OR = {
+						has_building = temple
+						has_building = cathedral
+					}
+					value = 1
+				}
+	
+				innovativeness = 50
+	
+			}
+			effect = {
+	
+				if = {
+					limit = { ruler_has_personality = immortal_personality }
+	
+					change_innovativeness = -25
+	
+					add_country_modifier = {
+						name = lizard_6th_spawning
+						duration = -1
+					}
+	
+					clear_ruler_personalities = yes
+	
+					add_ruler_personality = slann_personality
+					add_ruler_personality = immortal_personality
+	
+					if = {
+						limit = {
+							adm = 6
+						}
+						add_adm_power = 100
+					}
+					else = {
+						change_adm = 1
+					}
+	
+					if = {
+						limit = {
+							dip = 6
+						}
+						add_dip_power = 100
+					}
+					else = {
+						change_dip = 1
+					}
+	
+					if = {
+						limit = {
+							mil = 6
+						}
+						add_mil_power = 100
+					}
+					else = {
+						change_mil = 1
+					}
+	
+					define_heir = {
+						adm = 6
+						dip = 5
+						mil = 4
+						age = 0
+						claim = 100
+					}
+	
+					add_heir_personality = slann_personality
+	
+	
+				} else = {
+					change_innovativeness = -25
+	
+					add_country_modifier = {
+						name = lizard_6th_spawning
+						duration = -1
+					}
+	
+					define_ruler = {
+						adm = 5
+						dip = 4
+						mil = 6
+						age = 16
+						claim = 100
+					}
+	
+					add_ruler_personality = slann_personality
+	
+					define_heir = {
+						adm = 6
+						dip = 5
+						mil = 4
+						age = 0
+						claim = 100
+					}
+	
+					add_heir_personality = slann_personality
+				}
+			}
+		}
 
 	Z54_lizards_warlike_people_1 = {
 		icon = mission_lizard_army
@@ -536,7 +822,6 @@ Z54_dragon_isle_missions_3 = {
 		trigger = {
 			gnoblar_country_2_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
 			gnoblar_country_5_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
-
 		}
 
 		effect = {
@@ -554,6 +839,8 @@ Z54_dragon_isle_missions_3 = {
 					}
 					add_permanent_claim = ROOT
 				}
+
+				
 			}
 		}
 
@@ -603,13 +890,13 @@ Z54_dragon_isle_missions_3 = {
 			trigger = {
 				AND = {
 					ind_3_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
-					owns = 4070
-					owns = 4071
-					owns = 4072
-					owns = 4077
-					owns = 4078
-					owns = 4079
-					owns = 4253
+					owns_or_non_sovereign_subject_of = 4070
+					owns_or_non_sovereign_subject_of = 4071
+					owns_or_non_sovereign_subject_of = 4072
+					owns_or_non_sovereign_subject_of = 4077
+					owns_or_non_sovereign_subject_of = 4078
+					owns_or_non_sovereign_subject_of = 4079
+					owns_or_non_sovereign_subject_of = 4253
 					}
 				
 			}
@@ -681,35 +968,118 @@ Z54_dragon_isle_missions_3 = {
 					}
 
 					Z54_March_south = {
-						position = 13
+						
 						icon = mission_lizard_army
 						required_missions = { Z54_Fall_of_bhalluka }
 						provinces_to_highlight = {
 							OR = {
-								area = ind_2_area
-								area = ind_1_area
-								
+								area = ind_25_area
+								area = ind_8_area
+								area = ind_6_area
 							}
 							NOT = { country_or_non_sovereign_subject_holds = ROOT }
 						}
 						trigger = {
-							dragon_isles_region= { type = all country_or_non_sovereign_subject_holds = ROOT }
-						
+							ind_6_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+							ind_8_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+							ind_25_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+				
 						}
 				
 						effect = {
-							country_event = { 
-								id = lizardmen_events.11
-			
+							ind_9_area = {
+								limit = {
+									NOT = { is_core = ROOT }
+									NOT = { is_permanent_claim = ROOT }
+								}
+								add_permanent_claim = ROOT
 							}
 				
+							ind_26_area = {
+								limit = {
+									NOT = { is_core = ROOT }
+									NOT = { is_permanent_claim = ROOT }
+								}
+								add_permanent_claim = ROOT
 							}
+							
+							
+							ind_10_area = {
+								limit = {
+									NOT = { is_core = ROOT }
+									NOT = { is_permanent_claim = ROOT }
+								}
+								add_permanent_claim = ROOT
+							}
+				
 						}
 
 
+						}
+
+						Z54_Destroy_the_beastmen = {
+						
+							icon = mission_lizard_army
+							required_missions = { Z54_March_south }
+							provinces_to_highlight = {
+								OR = {
+									area = ind_9_area
+									area = ind_26_area
+									province_id = 4428
+									province_id = 4131
+								}
+								NOT = { country_or_non_sovereign_subject_holds = ROOT }
+							}
+							trigger = {
+								ind_26_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+								ind_9_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+								owns_or_non_sovereign_subject_of = 4428
+								owns_or_non_sovereign_subject_of = 4131
+							}
+					
+							effect = {
+
+								add_country_modifier = {
+									name = lizard_living_space
+									duration = -1
+								}
+							}
 
 
+						}
 
+						Z54_Last_frontier = {
+							
+							icon = mission_retake_ceuta
+							required_missions = { Z54_Destroy_the_beastmen Z54_Push_to_the_sea }
+							provinces_to_highlight = {
+								OR = {
+									region = ind_end_region
+									region = eastern_ind_region
+									region = western_ind_region
+									
+								}
+								NOT = { country_or_non_sovereign_subject_holds = ROOT }
+							}
+							trigger = {
+								western_ind_region = { type = all country_or_non_sovereign_subject_holds = ROOT }
+								eastern_ind_region= { type = all country_or_non_sovereign_subject_holds = ROOT }
+								ind_end_region= { type = all country_or_non_sovereign_subject_holds = ROOT }
+							}
+					
+							effect = {
+								eastern_colonies_region = {
+									limit = {
+										NOT = { is_core = ROOT }
+										NOT = { is_permanent_claim = ROOT }
+									}
+									add_permanent_claim = ROOT
+								}
+					
+							}
+
+
+						}
 
 
 
@@ -839,27 +1209,117 @@ Z54_dragon_isle_missions_4 = {
 		required_missions = { Z54_Fall_of_bhalluka }
 		provinces_to_highlight = {
 			OR = {
-				area = ind_2_area
-				area = ind_1_area
-				
+				area = ind_6_area
+				area = ind_17_area
+				area = ind_4_area
+				area = ind_5_area
+				area = ind_23_area
+				area = ind_24_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			dragon_isles_region= { type = all country_or_non_sovereign_subject_holds = ROOT }
-		
+			ind_6_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+			ind_8_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+			ind_17_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+			ind_4_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+			ind_5_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+			ind_23_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+			ind_24_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+
 		}
 
 		effect = {
-			country_event = { 
-				id = lizardmen_events.11
-
+			ind_19_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
 			}
 
+			ind_18_area  = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			
+			
+			ind_21_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+
+			ind_22_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}	
+			
+			ind_14_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			ind_13_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+
+
+		}
+
+	}
+
+	Z54_Push_to_the_sea = {
+		icon = mission_lizard_army
+		position = 13	
+		required_missions = { Z54_March_East }
+		provinces_to_highlight = {
+			OR = {
+				area = ind_13_area
+				area = ind_14_area
+				area = ind_22_area
+				area = ind_21_area
+				area = 	ind_18_area
+				area = ind_19_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			ind_13_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+			ind_14_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+			ind_22_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+			ind_21_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+			ind_18_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+			ind_19_area= { type = all country_or_non_sovereign_subject_holds = ROOT }
+
+		}
+
+		effect = {
+
+			ind_end_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
 			}
 		}
 
-
+	}
 
 
 }

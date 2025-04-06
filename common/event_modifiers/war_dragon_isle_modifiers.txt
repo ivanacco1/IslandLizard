@@ -107,7 +107,7 @@ lizard_ultimate_lizard = {
 
 lizard_ultimate_lizard_units = {
 	infantry_power = 0.30
-	infantry_fire = 0.75
+	infantry_fire = 0.1
 	shock_damage_received = 0.23
 	is_rajput_modifier = yes
 }
@@ -130,4 +130,20 @@ lizard_cliffside_settlement = {
 
 lizard_summer_capital = {
 	development_cost_modifier = -0.15
+}
+
+lizard_living_space = {
+	culture_conversion_cost = -0.25
+	culture_conversion_time = -0.2
+	tolerance_heretic = -3
+}
+
+lizard_religious_conversion = {
+	global_missionary_strength = 0.03
+}
+
+lizard_religious_hegemony = {
+	yearly_government_power = 1.5
+	cb_on_religious_enemies = yes
+	manpower_in_true_faith_provinces= 0.20
 }
